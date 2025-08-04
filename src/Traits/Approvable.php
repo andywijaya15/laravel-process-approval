@@ -350,7 +350,7 @@ trait Approvable
         if ($this->isSubmitted()) {
             throw RequestAlreadySubmittedException::create($this);
         }
-        if ($this->approvalStatus->creator_id && $this->approvalStatus->creator_id !== Auth::id()) {
+        if ($this->approvalStatus->creator_id && $this->approvalStatus->creator_id != Auth::id()) {
             throw new RuntimeException('Only the creator can submit the record');
         }
         $user = $user ?? Auth::user();
@@ -711,7 +711,7 @@ trait Approvable
             $action = ApprovalStatusEnum::PENDING->value;
         }
         return $this->approvalStatus()->update([
-            'steps' => $currentSteps,
+            'steps' => json_encode($currentSteps),
             'status' => $action
         ]);
     }
