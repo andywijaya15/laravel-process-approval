@@ -169,12 +169,6 @@ interface ApprovableModel
      * @param array|null $steps
      * @return bool
      */
-    public static function makeApprovable(array|null $steps = null, string|null $name = null): bool;
-
-    /**
-     * Returns the next individual who should approve this record.
-     *
-     * @return \App\Models\User|null
-     */
-    public function getNextApproverAttribute(): ?User;
+    public static function makeApprovable(array|null $steps = null, string|null $name = null):bool;
 }
+
